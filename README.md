@@ -79,7 +79,7 @@ server-status           [Status: 403, Size: 276, Words: 20, Lines: 10]
 static                  [Status: 301, Size: 311, Words: 20, Lines: 10]
 ~webmaster              [Status: 301, Size: 315, Words: 20, Lines: 10]
 ```
-Bingo ! We have ~webmaster
+Bougnoule ! We have ~webmaster
 
 ![image](https://user-images.githubusercontent.com/90036439/223973205-ac9467ee-8ca2-43be-906c-0b69d4c14fcf.png)
 
