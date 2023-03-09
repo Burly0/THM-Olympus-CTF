@@ -30,5 +30,10 @@ PORT   STATE SERVICE REASON  VERSION
 |_http-title: Did not follow redirect to http://olympus.thm
 Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 ```
+# Ennumeration
+```bash
+echo "10.10.27.68 olympus.thm" >> /etc/hosts
+```
+
 
 
