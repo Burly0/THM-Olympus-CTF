@@ -83,8 +83,11 @@ Bingo ! We have ~webmaster
 
 While messing around on the site I was able to trigger an SQL error on the "search" parameter. By doing some deep research, I saw that Victor CMS was vulnerable to SQL injections.
 https://www.exploit-db.com/exploits/48734
+
 ![image](https://user-images.githubusercontent.com/90036439/223974836-e8de8d9a-c3f8-43d0-91da-08e3753e8d06.png)
 
+I saved the querry via burpsuit and send it to sqlmap. I was able to recover all the databases on the server. But only Olympus interests me.
+So I dump all the data from the Olympus
 
 ```bash
 root@ip-10-10-70-200:~# sqlmap -r victorCMS-search.request --dbs
