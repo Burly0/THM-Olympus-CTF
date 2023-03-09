@@ -136,9 +136,11 @@ Table: chats
 | 2022-04-06 | I know this is pretty cool. The IT guy used a random file name function to make it harder for attackers to access the uploaded files. He's still working on it. | <blank>                              | zeus       |
 +------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------+------------+
 ```
-So we have some chat logs but we can't find it anyware... I try to push my luck by adding chat.olympus.thm to my /ect/hosts file.
+So we have some chat logs but we can't find it anyware... I try to push my luck by adding chat.olympus.thm to my /ect/hosts file. And it wokred...!
 
 ![image](https://user-images.githubusercontent.com/90036439/223983373-552684f7-5e73-4b54-ba76-ff0d0c38858a.png)
+
+I logged in with the credentials I cracked promotheuse:s[........]e
 
 ![image](https://user-images.githubusercontent.com/90036439/223985036-95de1514-234a-4bfb-8717-edfccd387bd5.png)
 
