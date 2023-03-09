@@ -1,5 +1,6 @@
 # THM-Olympus-CTF
-
+# Ennumeration
+As you can see from the Nmap scan, port 22 ssh and port 80 are open. And port 80 redirects us to http://olympus.thm 
 
 ```bash
 root@ip-10-10-230-85:~# rustscan -a 10.10.182.192 -- -sC -sV
@@ -30,10 +31,12 @@ PORT   STATE SERVICE REASON  VERSION
 |_http-title: Did not follow redirect to http://olympus.thm
 Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 ```
-# Ennumeration
+
+Add the domain name olympus to your hosts file
 ```bash
 echo "10.10.27.68 olympus.thm" >> /etc/hosts
 ```
+
 ![image](https://user-images.githubusercontent.com/90036439/223972505-ab22dc4d-99b4-4295-96e5-7d3ec9145d5a.png)
 
 
