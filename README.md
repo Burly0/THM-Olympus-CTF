@@ -1,4 +1,7 @@
 # THM-Olympus-CTF
+
+Room : https://tryhackme.com/room/olympusroom
+
 # Port Scanning
 As you can see from the Nmap scan, port 22 ssh and port 80 are open. And port 80 redirects us to http://olympus.thm 
 
