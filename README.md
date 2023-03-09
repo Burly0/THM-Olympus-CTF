@@ -1,5 +1,5 @@
 # THM-Olympus-CTF
-# Ennumeration
+# Port Scanning
 As you can see from the Nmap scan, port 22 ssh and port 80 are open. And port 80 redirects us to http://olympus.thm 
 
 ```bash
@@ -36,9 +36,11 @@ Add the domain name olympus to your hosts file
 ```bash
 echo "10.10.27.68 olympus.thm" >> /etc/hosts
 ```
-
+Et voilà !  We have acces to the web site.Unfortunately, we are greeted with a message saying that this site is still under construction...
 ![image](https://user-images.githubusercontent.com/90036439/223972505-ab22dc4d-99b4-4295-96e5-7d3ec9145d5a.png)
 
+# Ennumeration
+Let's start by seeing if we can discover some interesting files 
 
 ```bash
 root@ip-10-10-70-200:~# ffuf -u http://olympus.thm/FUZZ -w /usr/share/wordlists/SecLists/Discovery/Web-Content/common.txt 
@@ -74,6 +76,8 @@ static                  [Status: 301, Size: 311, Words: 20, Lines: 10]
 ~webmaster              [Status: 301, Size: 315, Words: 20, Lines: 10]
 :: Progress: [4655/4655] :: Job [1/1] :: 33790 req/sec :: Duration: [0:00:05] :: Errors: 0 ::
 ```
+Bingo ! We have ~webmaster
+
 ![image](https://user-images.githubusercontent.com/90036439/223973205-ac9467ee-8ca2-43be-906c-0b69d4c14fcf.png)
 ![image](https://user-images.githubusercontent.com/90036439/223974836-e8de8d9a-c3f8-43d0-91da-08e3753e8d06.png)
 
