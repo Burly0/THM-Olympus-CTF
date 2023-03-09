@@ -40,7 +40,7 @@ Et voilà !  We have access to the web site.Unfortunately, we are greeted with a
 
 ![image](https://user-images.githubusercontent.com/90036439/223972505-ab22dc4d-99b4-4295-96e5-7d3ec9145d5a.png)
 
-# Ennumeration
+# Enumeration
 Let's start by seeing if we can discover some interesting files 
 
 ```bash
@@ -79,6 +79,8 @@ static                  [Status: 301, Size: 311, Words: 20, Lines: 10]
 Bingo ! We have ~webmaster
 
 ![image](https://user-images.githubusercontent.com/90036439/223973205-ac9467ee-8ca2-43be-906c-0b69d4c14fcf.png)
+
+# Initial access
 
 While messing around on the site I was able to trigger an SQL error on the "search" parameter. By doing some research, I saw that Victor CMS was vulnerable to SQL injections.
 https://www.exploit-db.com/exploits/48734
@@ -235,6 +237,8 @@ nc -lvnp 9001
 
 www-data@olympus:/var/www/chat.olympus.thm/public_html/uploads$ 
 ```
+# Lateral movement
+
 Doing my usual routine i found interssting that we can execute cputils
 
 ```bash
@@ -347,6 +351,8 @@ Last login: Sat Jul 16 07:52:39 2022
 zeus@olympus:~$ 
 ```
 
+# Privilege escalation to root
+
 While exploring the room, I came across these folders with random names containing a php file
 
 ```bash
@@ -417,8 +423,8 @@ uid=0(root) gid=0(root) groups=0(root),4(adm),24(cdrom),27(sudo),30(dip),46(plug
 # 
 ```
 # Flag 1
-
 In the database !
+
 ```
 mysql> select * from flag;
 +---------------------------+
@@ -429,7 +435,6 @@ mysql> select * from flag;
 1 row in set (0.00 sec)
 ```
 # Flag 2
-
 In zeus /home !
 
 ```
@@ -437,20 +442,16 @@ zeus@olympus:~$ cat user.flag
 flag{.........................}
 ```
 # Flag 3
-
 In root directory !
 
 ```
 cat root.flag
 flag{...............}
 ```
-
 # Flag 4 - Bonus
 In /etc/ directory !
 
 ```
 # grep -Ri flag{ 2>/dev/null
 ssl/private/.b0nus.fl4g:flag{................}
-
 ```
-
