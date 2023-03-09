@@ -39,7 +39,7 @@ Add the domain name olympus to your hosts file
 ```bash
 echo "10.10.27.68 olympus.thm" >> /etc/hosts
 ```
-Et voilà !  We have access to the web site.Unfortunately, we are greeted with a message saying that this site is still under construction...
+Et voilà !  We have access to the web site. Unfortunately, we are greeted with a message saying that this site is still under construction...
 
 ![image](https://user-images.githubusercontent.com/90036439/223972505-ab22dc4d-99b4-4295-96e5-7d3ec9145d5a.png)
 
