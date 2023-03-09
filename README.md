@@ -123,6 +123,22 @@ s[.........]e       (?)
 Use the "--show" option to display all of the cracked passwords reliably
 Session completed. 
 ```
+Exploring the database i found a table called chats. 
+
+```Database: olympus
+Table: chats
+[3 entries]
++------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------+------------+
+| dt         | msg                                                                                                                                                             | file                                 | uname      |
++------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------+------------+
+| 2022-04-05 | Attached : prometheus_password.txt                                                                                                                              | 47c3210d51761686f3af40a875eeaaea.txt | prometheus |
+| 2022-04-05 | This looks great! I tested an upload and found the upload folder, but it seems the filename got changed somehow because I can't download it back...             | <blank>                              | prometheus |
+| 2022-04-06 | I know this is pretty cool. The IT guy used a random file name function to make it harder for attackers to access the uploaded files. He's still working on it. | <blank>                              | zeus       |
++------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------+------------+
+
+
+```
+
 ![image](https://user-images.githubusercontent.com/90036439/223977977-be6d630d-dd90-4e56-80cf-56c1de2884c3.png)
 
 ![image](https://user-images.githubusercontent.com/90036439/223983373-552684f7-5e73-4b54-ba76-ff0d0c38858a.png)
