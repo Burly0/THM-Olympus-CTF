@@ -1,5 +1,7 @@
 # THM-Olympus-CTF
 
+
+```bash
 root@ip-10-10-230-85:~# rustscan -a 10.10.182.192 -- -sC -sV
 .----. .-. .-. .----..---.  .----. .---.   .--.  .-. .-.
 | {}  }| { } |{ {__ {_   _}{ {__  /  ___} / {} \ |  `| |
@@ -27,3 +29,6 @@ PORT   STATE SERVICE REASON  VERSION
 |_http-server-header: Apache/2.4.41 (Ubuntu)
 |_http-title: Did not follow redirect to http://olympus.thm
 Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+```
+
+
