@@ -255,5 +255,9 @@ www-data@olympus:/var/www/html/chat.olympus.thm$ find / -type f -perm -4000 2>/d
 /usr/bin/fusermount
 /usr/bin/umount
 /usr/bin/newgrp
-
 ```
+```bash
+www-data@olympus:/var$ ls -la /usr/bin/cputils
+-rwsr-xr-x 1 zeus zeus 17728 Apr 18  2022 /usr/bin/cputils
+```
+
