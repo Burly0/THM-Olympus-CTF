@@ -173,7 +173,7 @@ Table: chats
 +------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------+------------+
 ```
 
-The ast step is to know where the file is located, quick directory fuzzing on chat.olympus.thm and we have the directory uploads.
+The Last step is to know where the file is located, quick directory fuzzing on chat.olympus.thm and we have the directory uploads.
 
 ```bash
 root@ip-10-10-70-200:~# ffuf -u http://chat.olympus.thm/FUZZ -w /usr/share/wordlists/SecLists/Discovery/Web-Content/common.txt
