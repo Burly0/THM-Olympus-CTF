@@ -108,11 +108,10 @@ s[.........]e       (?)
 Use the "--show" option to display all of the cracked passwords reliably
 Session completed. 
 ```
-
 ![image](https://user-images.githubusercontent.com/90036439/223977977-be6d630d-dd90-4e56-80cf-56c1de2884c3.png)
 
 ![image](https://user-images.githubusercontent.com/90036439/223983373-552684f7-5e73-4b54-ba76-ff0d0c38858a.png)
 
 ![image](https://user-images.githubusercontent.com/90036439/223985036-95de1514-234a-4bfb-8717-edfccd387bd5.png)
 
-
+Let's put together what we know. The IT guy made sure that the files that are sent to the server via chat have a random name. We also know that all messages are stored in the database including the files we send.
