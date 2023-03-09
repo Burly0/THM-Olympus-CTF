@@ -96,4 +96,5 @@ root@ip-10-10-70-200:~# sqlmap -r victorCMS-search.request --dump -D olympus
 ![image](https://user-images.githubusercontent.com/90036439/223977555-baf68ac5-5e32-4d50-b2c7-c0ea7013e61a.png)
 
 
+![image](https://user-images.githubusercontent.com/90036439/223977977-be6d630d-dd90-4e56-80cf-56c1de2884c3.png)
 
