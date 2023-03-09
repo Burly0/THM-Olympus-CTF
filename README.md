@@ -129,7 +129,7 @@ Session completed.
 
 ![image](https://user-images.githubusercontent.com/90036439/223985036-95de1514-234a-4bfb-8717-edfccd387bd5.png)
 
-Let's put together what we know. The IT guy made sure that the files that are sent to the server via chat have a random name. We also know that all messages are stored in the database including the files we send.
+Let's put together what we know. The IT guy made sure that the files that are sent to the server via chat have a random name. We also know that all messages are stored in the database including the files we send. We can make a php file containing a reverse shell or one that executes commands on the server. Upload it to the server via the chat. Dump the database and get its name
 
 ```bash
 root@ip-10-10-70-200:~# cat totalyNotEvileFile.php 
