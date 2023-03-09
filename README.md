@@ -36,7 +36,7 @@ Add the domain name olympus to your hosts file
 ```bash
 echo "10.10.27.68 olympus.thm" >> /etc/hosts
 ```
-Et voilà !  We have acces to the web site.Unfortunately, we are greeted with a message saying that this site is still under construction...
+Et voilà !  We have access to the web site.Unfortunately, we are greeted with a message saying that this site is still under construction...
 
 ![image](https://user-images.githubusercontent.com/90036439/223972505-ab22dc4d-99b4-4295-96e5-7d3ec9145d5a.png)
 
@@ -80,12 +80,12 @@ Bingo ! We have ~webmaster
 
 ![image](https://user-images.githubusercontent.com/90036439/223973205-ac9467ee-8ca2-43be-906c-0b69d4c14fcf.png)
 
-While messing around on the site I was able to trigger an SQL error on the "search" parameter. By doing some deep research, I saw that Victor CMS was vulnerable to SQL injections.
+While messing around on the site I was able to trigger an SQL error on the "search" parameter. By doing some research, I saw that Victor CMS was vulnerable to SQL injections.
 https://www.exploit-db.com/exploits/48734
 
 ![image](https://user-images.githubusercontent.com/90036439/223974836-e8de8d9a-c3f8-43d0-91da-08e3753e8d06.png)
 
-I saved the querry via burpsuit and send it to sqlmap. I was able to recover all the databases on the server. But only Olympus interests me.
+I saved the query via burpsuit and send it to sqlmap. I was able to recover all the databases on the server. But only Olympus interests me.
 So I dump all the data from the Olympus
 
 ```bash
@@ -135,7 +135,7 @@ Table: chats
 | 2022-04-06 | I know this is pretty cool. The IT guy used a random file name function to make it harder for attackers to access the uploaded files. He's still working on it. | <blank>                              | zeus       |
 +------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------+------------+
 ```
-So we have some chat logs but we can't find it anyware... I try to push my luck by adding chat.olympus.thm to my /ect/hosts file. And it wokred...!
+So we have some chat logs but we can't find it anywhere... I try to push my luck by adding chat.olympus.thm to my /etc/hosts file. And it worked...!
 
 ![image](https://user-images.githubusercontent.com/90036439/223983373-552684f7-5e73-4b54-ba76-ff0d0c38858a.png)
 
@@ -143,7 +143,7 @@ I logged in with the credentials I cracked prometheus:s[........]e
 
 ![image](https://user-images.githubusercontent.com/90036439/223985036-95de1514-234a-4bfb-8717-edfccd387bd5.png)
 
-Let's put together what we know. The IT guy made sure that the files that are sent to the server via chat have a random name. We also know that all messages are stored in the database including the files that we send. We can make a php file containing a reverse shell or one that executes commands on the server. Upload it to the via the chat. Dump the database, get the name of our file and exploit it !
+Let's put together what we know. The IT guy made sure that the files that are sent to the server via chat have a random name. We also know that all messages are stored in the database including the files that we send. We can make a php file containing a reverse shell or one that executes commands on the server. Upload it via the chat. Dump the database, get the name of our file and exploit it !
 
 First, make the file containing the php exploit and send it via the chat.
 ```bash
@@ -168,7 +168,7 @@ Table: chats
 +------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------+------------+
 ```
 
-Last step is to know where the file is located, quick directory fuzzing on chat.olympus.thm and we have the directory uploads.
+The ast step is to know where the file is located, quick directory fuzzing on chat.olympus.thm and we have the directory uploads.
 
 ```bash
 root@ip-10-10-70-200:~# ffuf -u http://chat.olympus.thm/FUZZ -w /usr/share/wordlists/SecLists/Discovery/Web-Content/common.txt
@@ -274,7 +274,7 @@ File copied successfully.
 [...]
 ```
 
-Let's try to copie the ssh key of the user zeus.
+Let's try to copy the ssh key of the user zeus.
 
 ```bash
 www-data@olympus:/var$ /usr/bin/cputils
@@ -415,5 +415,42 @@ zeus     pts/4    10.10.77.8       13:37    3.00s  0.03s  0.00s w
 # id
 uid=0(root) gid=0(root) groups=0(root),4(adm),24(cdrom),27(sudo),30(dip),46(plugdev),1000(zeus)
 # 
+```
+# Flag 1
+
+In the database !
+```
+mysql> select * from flag;
++---------------------------+
+| flag                      |
++---------------------------+
+| flag{...................} |
++---------------------------+
+1 row in set (0.00 sec)
+```
+# Flag 2
+
+In zeus /home !
+
+```
+zeus@olympus:~$ cat user.flag 
+flag{.........................}
+```
+# Flag 3
+
+In root directory !
+
+```
+cat root.flag
+flag{...............}
+```
+
+# Flag 4 - Bonus
+In /etc/ directory !
+
+```
+# grep -Ri flag{ 2>/dev/null
+ssl/private/.b0nus.fl4g:flag{................}
+
 ```
 
