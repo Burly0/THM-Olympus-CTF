@@ -37,6 +37,7 @@ Add the domain name olympus to your hosts file
 echo "10.10.27.68 olympus.thm" >> /etc/hosts
 ```
 Et voilà !  We have acces to the web site.Unfortunately, we are greeted with a message saying that this site is still under construction...
+
 ![image](https://user-images.githubusercontent.com/90036439/223972505-ab22dc4d-99b4-4295-96e5-7d3ec9145d5a.png)
 
 # Ennumeration
@@ -79,7 +80,11 @@ static                  [Status: 301, Size: 311, Words: 20, Lines: 10]
 Bingo ! We have ~webmaster
 
 ![image](https://user-images.githubusercontent.com/90036439/223973205-ac9467ee-8ca2-43be-906c-0b69d4c14fcf.png)
+
+While messing around on the site I was able to trigger an SQL error on the "search" parameter. By doing some deep research, I saw that Victor CMS was vulnerable to SQL injections.
+https://www.exploit-db.com/exploits/48734
 ![image](https://user-images.githubusercontent.com/90036439/223974836-e8de8d9a-c3f8-43d0-91da-08e3753e8d06.png)
+
 
 ```bash
 root@ip-10-10-70-200:~# sqlmap -r victorCMS-search.request --dbs
